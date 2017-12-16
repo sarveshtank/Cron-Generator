@@ -1,18 +1,25 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
+import { RouterModule, Routes } from '@angular/router';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
+import { CronGenComponent } from './cron-gen/cron-gen.component';
 
+
+const root: Routes = [
+  {path: 'cron', component: CronGenComponent}
+];
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    CronGenComponent
   ],
   imports: [
     BrowserModule,
+    ReactiveFormsModule,
     FormsModule,
-    HttpModule
+    RouterModule.forRoot(root)
   ],
   providers: [],
   bootstrap: [AppComponent]

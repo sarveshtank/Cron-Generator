@@ -1,0 +1,81 @@
+<div>
+  <span>Schedule Task as: </span>
+  <select [(ngModel)]="selectedItem">
+    <option [ngValue]="1">Second</option>
+    <option [ngValue]="2">Minute</option>
+    <option [ngValue]="3">Hour</option>
+    <option [ngValue]="4">Daily</option>
+    <option [ngValue]="5">Weekly</option>
+    <option [ngValue]="6">Monthly</option>
+  </select>
+</div>
+
+<div *ngIf="selectedItem==1">
+  <form [formGroup]="secondsform"  (ngSubmit)="secondlySubmit()">
+    Every <input type="number"  min="1" max="59"  formControlName="seconds"> Seconds <br/>
+    <button type="Submit" [disabled]="!secondsform.valid">Submit</button>
+  </form>
+</div>
+
+
+<div *ngIf="selectedItem==2">
+  <form [formGroup]="minutesform" (ngSubmit)="minutesSubmit()">
+    Every <input type="number" min="1" max="59" formControlName="seconds"> Seconds <br/> 
+    Every <input type="number" min="1" max="59" formControlName="minutes"> Minutes <br/>
+    <button type="Submit" [disabled]="!minutesform.valid">Submit</button>
+  </form>
+</div>
+
+
+<div *ngIf="selectedItem==3">
+  <form [formGroup]="hoursform" (ngSubmit)="hourlySubmit()">
+    Every <input type="number" min="1" max="59" formControlName="seconds"> Seconds <br/>
+    Every <input type="number" min="1" max="59" formControlName="seconds"> Minutes <br/>
+    Every <input type="number" min="1" max="24" formControlName="hours"> Hour <br/>
+    <button type="Submit" [disabled]="!hoursform.valid">Submit</button>
+  </form>
+</div>
+
+<div *ngIf="selectedItem==4">
+  <form [formGroup]="dailyform" (ngSubmit)="dailySubmit()">
+    Every Day at
+    <input type="number" min="1" max="24" formControlName="seconds" placeholder="HH"> :
+    <input type="number" min="1" max="59" formControlName="minutes" placeholder="MM">:
+    <input type="number" min="1" max="59" formControlName="hours" placeholder="SS"> <br/>
+    <button type="Submit" [disabled]="!dailyform.valid">Submit</button>
+  </form>
+</div>
+
+<div *ngIf="selectedItem==5">
+  <form [formGroup]="weeklyform" (ngSubmit)="weeklySubmit()">
+    Every Week on
+    <span>
+        <select formControlName="week">
+          <option value="MON">MON</option>
+          <option value="TUE">TUE</option>
+          <option value="WED">WED</option>
+          <option value="THU">THU</option>
+          <option value="FRI">FRI</option>
+          <option value="SAT">SAT</option>
+          <option value="SUN">SUN</option>
+        </select>
+      </span> at
+    <input type="number" min="1" max="24" formControlName="seconds" placeholder="HH"> :
+    <input type="number" min="1" max="59" formControlName="minutes" placeholder="MM">:
+    <input type="number" min="1" max="59" formControlName="hours" placeholder="SS"> <br/>
+    <button type="Submit"[disabled]="!weeklyform.valid">Submit</button>
+  </form>
+</div>
+
+<div *ngIf="selectedItem==6">
+  <form [formGroup]="monthlyform" (ngSubmit)="monthlySubmit()">
+    Every 
+    <input type="number" min="1" max="31" formControlName="dayOfWeek"> day of Month at
+    <input type="number" min="1" max="24" formControlName="seconds" placeholder="HH"> :
+    <input type="number" min="1" max="59" formControlName="minutes" placeholder="MM">:
+    <input type="number" min="1" max="59" formControlName="hours" placeholder="SS"> <br/>
+    <button type="Submit" [disabled]="!monthlyform.valid">Submit</button>
+  </form>
+</div>
+
+{{cronExpression}}
