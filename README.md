@@ -1,4 +1,5 @@
 # CronGenerator
+Generate UNIX based Cron Expression 
 
 CronGenerator Project gives you a GUI for generating UNIX based CRON Expression. This Project is build in Angular 2 using [Angular CLI](https://github.com/angular/angular-cli) version 1.0.0.
 
