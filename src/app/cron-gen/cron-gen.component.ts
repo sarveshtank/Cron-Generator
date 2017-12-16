@@ -161,5 +161,4 @@ export class CronGenComponent implements OnInit {
       }
     });
   }
-
 }

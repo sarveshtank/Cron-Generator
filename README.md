@@ -30,6 +30,3 @@ Syntax: `<app-cron-gen (cron)="some_function_name($event)" ></app-cron-gen>`
     some_function_name(event) {
         // here this event object has the cron expression.
     }
-
-# Demo
-Checkout the demo at plnker.
